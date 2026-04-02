@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Билим Саякаты: 4 Оюн</title>
+    <style>
+        body { 
+            font-family: 'Segoe UI', sans-serif; 
+            background: #1a1a2e; 
+            color: white; 
+            text-align: center; 
+            margin: 0; 
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+        h1 { position: absolute; top: 15px; width: 100%; color: #00d2ff; font-size: 28px; }
+
+        /* БАСКЫЧТАРДЫ КИЧИРЕЙТҮҮ ЖАНА ЖАЙГАШТЫРУУ */
+        .menu-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            grid-template-rows: 1fr 1fr; 
+            gap: 30px; /* Баскычтардын ортосундагы боштук */
+            width: 85%; 
+            height: 65%; 
+            margin: auto;
+            max-width: 800px;
+        }
+
+        .btn { 
+            background: #16213e; 
+            border: 3px solid #e94560; 
+            color: white; 
+            font-size: 18px; /* Тамганын өлчөмү кичирейди */
+            border-radius: 15px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.3);
+        }
+
+        .btn:hover { 
+            background: #e94560; 
+            transform: scale(1.05); 
+            box-shadow: 0 0 25px rgba(233, 69, 96, 0.5);
+        }
+
+        /* ОЮН ТАЛААСЫ */
+        #game-area { 
+            display: none; 
+            background: white; 
+            color: #333; 
+            padding: 20px; 
+            border-radius: 20px; 
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            min-height: 400px;
+            z-index: 100;
+            box-shadow: 0 0 80px rgba(0,0,0,0.8);
+        }
+
+        .level-badge { position: absolute; top: 10px; right: 15px; background: #e94560; color: white; padding: 5px 12px; border-radius: 15px; font-weight: bold; font-size: 14px; }
+        .back-btn { background: #533483; color: white; border: none; padding: 10px 20px; margin-top: 20px; cursor: pointer; border-radius: 8px; font-weight: bold; }
+        
+        /* ОЮНДАРДЫН ИЧКИ СТИЛДЕРИ */
+        .ttt-grid { display: grid; grid-template-columns: repeat(3, 80px); gap: 8px; justify-content: center; margin: 15px auto; }
+        .ttt-cell { width: 80px; height: 80px; background: #eee; border: 2px solid #16213e; display: flex; align-items: center; justify-content: center; font-size: 35px; cursor: pointer; border-radius: 10px; }
+        .mem-grid { display: grid; grid-template-columns: repeat(4, 60px); gap: 10px; justify-content: center; }
+        .mem-card { width: 60px; height: 80px; background: #2c3e50; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 30px; color: transparent; }
+        .mem-card.open { background: #e94560; color: white; }
+        .mem-card.match { visibility: hidden; }
+        input { padding: 10px; font-size: 16px; width: 140px; border-radius: 8px; border: 2px solid #ccc; margin: 10px; }
+    </style>
+</head>
+<body>
+
+    <h1>БИЛИМ САЯКАТЫ</h1>
+    
+    <div id="main-menu" class="menu-grid">
+        <button class="btn" onclick="startGame(1)">🍃 Жалбырак табуу</button>
+        <button class="btn" onclick="startGame(2)">❌ Крестики-нолики</button>
+        <button class="btn" onclick="startGame(3)">💻 Программалоо</button>
+        <button class="btn" onclick="startGame(4)">🔢 Санды тап</button>
+    </div>
+
+    <div id="game-area">
+        <div id="lvl-display" class="level-badge">Level: 1</div>
+        <div id="display"></div>
+        <button class="back-btn" onclick="location.reload()">🏠 Менюга кайтуу</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
